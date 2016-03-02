@@ -183,6 +183,7 @@ public class LuaScript {
         } catch (JedisDataException e) {
             // this should pop if the script wasn't loaded or deleted, and re-cache the script
             loadScript();
+            res = pipe.evalsha(sha, numKeys, args);
         }
 
         return res;
@@ -216,6 +217,7 @@ public class LuaScript {
         } catch (JedisDataException e) {
             // this should pop if the script wasn't loaded or deleted, and re-cache the script
             loadScript();
+            res = conn.evalsha(sha, numKeys, args);
         }
 
         return res;
